@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="css/hangman.css">
+</head>
+<body>
+    <div id="content">
+      <div id="nav">
+        <div id="title">Hangman</div>
+      </div>
+        <label>Choose a letter:
+            <input type="text" id="letter-input">
+        </label>
+          <button id="letter-button">Guess</button>
+        <br><br>
+
+        <p>Guesses Left:<div id="guesses">8</div></p>
+        
+      
+
+        <div id="solution"></div>
+
+        <button id="reset-button">Reset</button>
+        <br><br>
+
+        <button id="giveup-button">Give Up</button>
+        <br><br>
+    </div>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/hangman.js"></script>    
+</body>
+</html>
