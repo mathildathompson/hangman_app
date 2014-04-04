@@ -4,15 +4,25 @@
 $(document).ready(function() {
   var words = ["word", "anotherword", "fart", "anotherfart"];
 
-  var word = ['a','p','p','l','e','s']              //_.sample(words).split('');
+  var word = ['a','p','p','l','e']   //_.sample(words).split('');
   var solution = [];
+
+  // var underScore = function () {
+    var wordLength = word.length;
+      var underscores = [];
+      for ( i = 0; i < wordLength; i++) {
+      underscores = underscores + "_ ";
+      // new_solution = underscores.slice();
+      };
+    $("#solution").text(underscores);
+  // };
 
   var counter = 8;
 
 
 
   var guess = function (letter){
-    if (_.contains(word,letter)) { 
+    if (_.contains(word, letter)) { 
       correctGuess(letter);
     } else {
       incorrectGuess(letter);
@@ -20,11 +30,12 @@ $(document).ready(function() {
   };
 
   var correctGuess = function (letter) {
-    solution.push(letter);
-    // console.log(_.uniq(word).sort());
-
+    var i = _.indexOf(word, letter);
+    solution[i] = letter;
+    $( "#solution" ).text(solution);
+    console.log(solution[i] = letter);
+debugger;
     if (_.uniq(word).sort() === solution.sort()) {
-
     console.log('win');
       // win();
     }; 
