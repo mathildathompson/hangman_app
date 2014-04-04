@@ -4,7 +4,7 @@
 $(document).ready(function() {
   var words = ["word", "anotherword", "fart", "anotherfart"];
 
-  var word = _.sample(words);
+  var word = ['a','p','p','l','e','s']              //_.sample(words).split('');
   var solution = [];
 
   var counter = 8;
@@ -12,41 +12,44 @@ $(document).ready(function() {
 
 
   var guess = function (letter){
-    // is letter in word?
-    if { 
-  // correctGuess(letter);
+    if (_.contains(word,letter)) { 
+      correctGuess(letter);
     } else {
-  // incorrectGuess(letter);
+      incorrectGuess(letter);
     };
   };
 
   var correctGuess = function (letter) {
-  // pass letter(s) into solution
-  // sort alphabetically word and solution
-  // if (_.Equal(solution, word)) {
+    solution.push(letter);
+    // console.log(_.uniq(word).sort());
+
+    if (_.uniq(word).sort() === solution.sort()) {
+
+    console.log('win');
       // win();
     }; 
   };
 
   var incorrectGuess = function (letter) {
-  // 
-  // -1 counter
-  // if counter === 0 fun lose();
-  };
+    counter -= 1;
+  //div inner html
+    console.log(counter);
+    if (counter === 0) {
+      lose();
+    };
 
-  var lose = function () {
+      var lose = function () {
+        console.log('you suck!');
+       };
+    };
+  // var win = function () {
+   
 
-  };
-
-  var win = function () {
-
-  };
 
 
-  $("#button").on('click', function(){
-    console.log('i am here');
-    var letter = $(this).val();
-    guess(lettter);
+  $("#letter-button").on('click', function(){
+    var letter = $('#letter-input').val();
+    // debugger;
+    guess(letter);
   });
-
 });
