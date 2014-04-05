@@ -1,66 +1,60 @@
-// win === _.Equal(solution, word)
-
-
 $(document).ready(function() {
+
   var words = ["word", "anotherword", "fart", "anotherfart"];
 
   var word = ['a','p','p','l','e']   //_.sample(words).split('');
-  var solution = [];
-
-  // var underScore = function () {
-    var wordLength = word.length;
-      var underscores = [];
-      for ( i = 0; i < wordLength; i++) {
-      underscores = underscores + "_ ";
-      // new_solution = underscores.slice();
-      };
-    $("#solution").text(underscores);
-  // };
-
+  var underscores = [];
+  var guessedLetters = [];
   var counter = 8;
 
+  //   var wordLength = word.length;
+  //     for ( i = 0; i < wordLength; i++) {
+  //     underscores = underscores + "_ ";
+  //     // new_solution = underscores.slice();
+  //     };
+  //   $("#solution").text(underscores);
 
+  var guess = function (letter) {
 
-  var guess = function (letter){
-    if (_.contains(word, letter)) { 
-      correctGuess(letter);
-    } else {
-      incorrectGuess(letter);
-    };
-  };
+    var solution = [];
 
-  var correctGuess = function (letter) {
-    var i = _.indexOf(word, letter);
-    solution[i] = letter;
-    $( "#solution" ).text(solution);
-    console.log(solution[i] = letter);
-debugger;
-    if (_.uniq(word).sort() === solution.sort()) {
-    console.log('win');
-      // win();
-    }; 
+    guessedLetters.push(letter);
+
+    _.each(word, function(letter){    
+      if (_.indexOf(guessedLetters, letter) === -1) {
+        solution.push("_"); 
+        $('#solution').text(solution.join(' '));
+        incorrectGuess();
+      } else {
+        solution.push(letter); 
+        $('#solution').text(solution.join(' '));
+        // if (word. === solution) {
+        //    win();
+        // };
+      };
+    });
   };
 
   var incorrectGuess = function (letter) {
     counter -= 1;
-  //div inner html
-    console.log(counter);
     if (counter === 0) {
-      lose();
+      // lose();
     };
+  };  
 
-      var lose = function () {
-        console.log('you suck!');
-       };
-    };
-  // var win = function () {
-   
-
-
+  var lose = function () {
+    console.log('you suck!');
+  };
+ 
+  
+  var win = function () {
+    console.log('fuck yeah!');
+  };
 
   $("#letter-button").on('click', function(){
     var letter = $('#letter-input').val();
     // debugger;
     guess(letter);
   });
+
 });
