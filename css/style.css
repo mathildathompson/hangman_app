@@ -24,6 +24,9 @@ input {
     height: 20px;
     border: solid 4px black;
     border-radius: 5px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 20px;
 }
 
 button {
@@ -50,4 +53,5 @@ button:hover {
     border: solid 4px black;
     border-radius: 5px;
     padding: 25px;
+    font-size: 22px;
 }

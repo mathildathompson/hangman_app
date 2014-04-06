@@ -5,17 +5,21 @@ $(document).ready(function() {
   // These are the variables we use throughout the function
     var words = ["word", "anotherword", "fart", "anotherfart"];
     var word = ['w', 'o', 'r', 'd']          // _.sample(words).split('');
-    var underscores = [];
     var guessedLetters = [];
     var counter = 8;
   
     var guess = function (letter) {
 
+    // Store the solution in an empty array to create the underscores and correct letter guesses  
       var solution = [];
 
+    // All guessed letters go into an empty array to compare to word
       guessedLetters.push(letter);
 
+    // Iterate through each letter of word
       _.each(word, function(letter){    
+
+    // Check if the guessed letter matches any letters in the word array
         if (_.indexOf(guessedLetters, letter) === -1) {
           solution.push("_"); 
           $('#solution').text(solution.join(' '));
@@ -49,13 +53,10 @@ $(document).ready(function() {
         .fadeOut(4000).delay(4000).queue(function() {
         location.reload();
     });
-
-      // location.reload();
     };
    
     
     var win = function () {
-
       $("#gallows").fadeOut(1000);
       $("#content").text('You Win!')
       $("#content").css('color', 'white');
