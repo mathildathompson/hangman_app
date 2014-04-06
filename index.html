@@ -1,33 +1,45 @@
 <!doctype html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
-    <title>Hangman</title>
+    <title>Hang Nyan</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div id="content">
-      <div id="nav">
-        <div id="title">Hangman</div>
-      </div>
-        <label>Choose a letter:
-            <input type="text" id="letter-input">
-        </label>
-          <button id="letter-button">Guess</button>
-        <br><br>
+        <div id="nav">
+            <div id="title">Hang Nyan</div>
+        </div>
+        <!-- all of the imagery related to the gallows go below -->
+        <div id="gallows" class="img8">
+           
+        </div>
 
-        <p>Guesses Left:<div id="guesses">8</div></p>
+        <!-- all of the guess iputs go below -->
+        <div id="guess_inputs">    
+            <label>Choose a letter:
+                <input type="text" id="letter-input">
+            </label>
+              <button id="letter-button">Guess</button>
+            <br><br>
+        </div>
+        
+        <p>Guesses Left: <span id="guesses">8</span></p>
         
       
-
         <div id="solution"></div>
-
-        <button id="reset-button">Reset</button>
-        <br><br>
 
         <button id="giveup-button">Give Up</button>
         <br><br>
+
     </div>
+<img src="">
+        <img id="cat-gif" style="position:absolute; visibility:hidden;" src="http://24.media.tumblr.com/tumblr_m9gmv0pQei1rxlmf0o1_500.gif">
+        <div><button id="reset-button">Reset</button>
+        </div>
+
+<!-- javascripts below -->
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/underscore.js"></script>
 <script src="js/hangman.js"></script>    

@@ -1,0 +1,53 @@
+@font-face{font-family: SilkscreenNormal; src: url(http://www.nyan.cat/css/slkscr.ttf);}
+html, body {
+  font-family: "SilkscreenNormal";
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#title {
+    margin: 25px 0 25px 0;
+    text-align: center;
+    font-size: 50px;
+}
+
+#gallows_img {
+  max-height: 400px;
+}
+#content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+input {
+    width: 25px;
+    height: 20px;
+    border: solid 4px black;
+    border-radius: 5px;
+}
+
+button {
+    font-family: inherit;
+    height: 30px;
+    background-color: red;
+    color: white;
+    border: solid 4px black;
+    border-radius: 5px;
+}
+
+button:hover {
+    background: green;
+}
+
+#reset-button {
+  display: block;
+  margin: 0 auto;
+}
+
+#solution {
+    margin: 25px auto;
+    height: 30px;
+    border: solid 4px black;
+    border-radius: 5px;
+    padding: 25px;
+}
