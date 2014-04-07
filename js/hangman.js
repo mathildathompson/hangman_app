@@ -1,47 +1,47 @@
-$(document).ready(function() {
   // This sets the first image of gallows when the screen is loaded.
     $("#gallows").append("<img id='gallows_img' src='img/img8.jpg'>")
     
   // These are the variables we use throughout the function
     var words = ["word", "anotherword", "fart", "anotherfart"];
     var word = ['w', 'o', 'r', 'd']          // _.sample(words).split('');
+    var underscores = [];
     var guessedLetters = [];
     var counter = 8;
-  
+    var $solution_div = $('#solution'); //You dont want to continue to select this from the DOM througout the exercise as its expensive; 
+    var $guesses = $('#guesses');
+    var $gallows = $('#gallows');
+    var $guess_input = $('#guess-inputs');
+
     var guess = function (letter) {
 
-    // Store the solution in an empty array to create the underscores and correct letter guesses  
       var solution = [];
 
-    // All guessed letters go into an empty array to compare to word
       guessedLetters.push(letter);
 
-    // Iterate through each letter of word
       _.each(word, function(letter){    
-
-    // Check if the guessed letter matches any letters in the word array
         if (_.indexOf(guessedLetters, letter) === -1) {
           solution.push("_"); 
-          $('#solution').text(solution.join(' '));
         } else {
           solution.push(letter); 
-          $('#solution').text(solution.join(' '));
-          if (word.join('') === solution.join('')) {
-             win();
-          };
-        };
-      });
-    incorrectGuess(letter);
+        }
+       });
+
+      $solution_div.html(solution.join(''));
+      //Before you were only checking if the user had one if the last letter matched the last letter in the word (this code was inside the else part of the if statment); 
+    
+      checkWin(word, solution);
+    
+
+      incorrectGuess(letter);
     };
 
    var incorrectGuess = function (letter) {
       if (_.indexOf(word, letter) === -1) {
         counter -= 1;
-        $("#guesses").text(counter);
-        $("#gallows").html("<img id='gallows_img' src='img/img" + counter + ".jpg'>")
-        console.log(counter);
+        $guesses.text(counter);
+        $gallows.html("<img id='gallows_img' src='img/img" + counter + ".jpg'>")
         if (counter === 0) {
-          $("#guess_inputs").hide();
+          $guess_input.hide();
           lose();
         };
       };
@@ -53,10 +53,16 @@ $(document).ready(function() {
         .fadeOut(4000).delay(4000).queue(function() {
         location.reload();
     });
+
+      // location.reload();
     };
    
     
-    var win = function () {
+    var checkWin = function (word, solution) {
+      if (word.join('') !== solution.join('')) {
+        return; //It will return out of the function and run no further code; 
+      };
+
       $("#gallows").fadeOut(1000);
       $("#content").text('You Win!')
       $("#content").css('color', 'white');
@@ -85,6 +91,7 @@ $(document).ready(function() {
       $("#cat-gif").animate({left: "-800"}, 5000);
     };
 
+var initialise = function(){
     $("#giveup-button").on('click', function() {
       $('#solution').text(word.join(''));
     });
@@ -96,6 +103,9 @@ $(document).ready(function() {
     $("#letter-button").on('click', function(){
       var letter = $('#letter-input').val();
       guess(letter);
+      $('#letter-input').val('');
     });
-});
+}
+
+$(document).ready(initialise);
 
