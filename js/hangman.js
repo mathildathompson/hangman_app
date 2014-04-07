@@ -7,7 +7,7 @@
     var underscores = [];
     var guessedLetters = [];
     var counter = 8;
-    var $solution_div = $('#solution'); //You dont want to continue to select this from the DOM througout the exercise as its expensive; 
+    var $solution_div = $('#solution'); //You dont want to continue to select this from the DOM througout the promgramme its expensive; 
     var $guesses = $('#guesses');
     var $gallows = $('#gallows');
     var $guess_input = $('#guess-inputs');
