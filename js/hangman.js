@@ -27,8 +27,7 @@
        });
 
       $solution_div.html(solution.join(''));
-      //Before you were only checking if the user had one if the last letter matched the last letter in the word (this code was inside the else part of the if statment); 
-    
+      //Before you were only checking if the user had one every time you were pushing a letter into the solution which is expensive; 
       checkWin(word, solution);
     
 
@@ -91,6 +90,7 @@
       $("#cat-gif").animate({left: "-800"}, 5000);
     };
 
+//Put this inside the initialise, better practice than having all of your code inside $(document).ready function; 
 var initialise = function(){
     $("#giveup-button").on('click', function() {
       $('#solution').text(word.join(''));
